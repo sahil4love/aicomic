@@ -1,6 +1,6 @@
 # ComicForge AI Studio
 
-ComicForge AI Studio is a ChatGPT-inspired AI web application that transforms voice or text prompts into continuous, 20-panel comic book storyboards with AI-generated pencil sketch artwork.
+ComicForge AI Studio is a AI web application that transforms voice or text prompts into continuous, 20-panel comic book storyboards with AI-generated pencil sketch artwork.
 
 ## Features
 - **ChatGPT Dark Theme**: Minimalist pitch-black interface with centered search input, suggestion pills, and voice input.
