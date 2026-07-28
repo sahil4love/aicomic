@@ -254,143 +254,6 @@ st.markdown("""
         box-sizing: border-box;
         overflow: hidden;
     }
-
-    /* Mobile & Tablet Responsive Media Queries */
-    @media (max-width: 768px) {
-        .block-container {
-            padding-top: 1rem !important;
-            padding-left: 0.8rem !important;
-            padding-right: 0.8rem !important;
-            padding-bottom: 2rem !important;
-        }
-
-        .chatgpt-hero-title {
-            font-size: clamp(1.4rem, 5.5vw, 2.2rem) !important;
-            margin-top: clamp(20px, 6vh, 60px) !important;
-            margin-bottom: 20px !important;
-        }
-
-        /* Landing layout outer margin collapse on mobile */
-        .landing-input-container div[data-testid="stHorizontalBlock"] > div[data-testid="column"]:first-child,
-        .landing-input-container div[data-testid="stHorizontalBlock"] > div[data-testid="column"]:last-child {
-            display: none !important;
-        }
-        
-        .landing-input-container div[data-testid="stHorizontalBlock"] > div[data-testid="column"]:nth-child(2) {
-            width: 100% !important;
-            min-width: 100% !important;
-            flex: 1 1 100% !important;
-        }
-
-        .landing-input-row div[data-testid="stHorizontalBlock"] {
-            display: flex !important;
-            flex-direction: row !important;
-            flex-wrap: nowrap !important;
-            align-items: center !important;
-            gap: 8px !important;
-        }
-
-        .landing-input-row div[data-testid="stHorizontalBlock"] > div[data-testid="column"]:first-child {
-            flex: 1 1 auto !important;
-            width: auto !important;
-        }
-
-        .landing-input-row div[data-testid="stHorizontalBlock"] > div[data-testid="column"]:last-child {
-            flex: 0 0 65px !important;
-            width: 65px !important;
-            min-width: 65px !important;
-        }
-
-        /* Responsive Suggestion Pills (Full width tap cards) */
-        .landing-sugg-container div[data-testid="stHorizontalBlock"] {
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 10px !important;
-        }
-        
-        .landing-sugg-container div[data-testid="stHorizontalBlock"] > div[data-testid="column"] {
-            width: 100% !important;
-            min-width: 100% !important;
-            flex: 1 1 100% !important;
-        }
-
-        .landing-sugg-container div[data-testid="stButton"] > button {
-            height: auto !important;
-            min-height: 48px !important;
-            padding: 12px 16px !important;
-            font-size: 0.88rem !important;
-            text-align: left !important;
-            justify-content: flex-start !important;
-        }
-
-        /* Comic panel grid stack on mobile (1 column) */
-        .comic-panel-grid div[data-testid="stHorizontalBlock"] {
-            display: flex !important;
-            flex-wrap: wrap !important;
-            gap: 16px !important;
-        }
-
-        .comic-panel-grid div[data-testid="stHorizontalBlock"] > div[data-testid="column"] {
-            width: 100% !important;
-            min-width: 100% !important;
-            flex: 1 1 100% !important;
-            margin-bottom: 8px !important;
-        }
-
-        .gpt-dialogue-text {
-            height: auto !important;
-            min-height: 52px !important;
-            max-height: none !important;
-            font-size: 0.85rem !important;
-            padding: 10px 12px !important;
-            margin-bottom: 16px !important;
-        }
-
-        /* Bottom action button responsive layout */
-        .bottom-gen-btn-container div[data-testid="stHorizontalBlock"] > div[data-testid="column"]:first-child,
-        .bottom-gen-btn-container div[data-testid="stHorizontalBlock"] > div[data-testid="column"]:last-child {
-            display: none !important;
-        }
-
-        .bottom-gen-btn-container div[data-testid="stHorizontalBlock"] > div[data-testid="column"]:nth-child(2) {
-            width: 100% !important;
-            min-width: 100% !important;
-            flex: 1 1 100% !important;
-        }
-
-        .primary-gen-btn > button {
-            width: 100% !important;
-        }
-
-        /* Sidebar overlay width on mobile */
-        section[data-testid="stSidebar"] {
-            width: 85vw !important;
-            max-width: 320px !important;
-        }
-
-        section[data-testid="stSidebar"] div[data-testid="stHorizontalBlock"] {
-            display: flex !important;
-            flex-direction: row !important;
-            flex-wrap: nowrap !important;
-            align-items: center !important;
-        }
-    }
-
-    /* Tablet breakpoint (2 columns per row for comic grid) */
-    @media (min-width: 576px) and (max-width: 991px) {
-        .comic-panel-grid div[data-testid="stHorizontalBlock"] {
-            display: flex !important;
-            flex-wrap: wrap !important;
-            gap: 16px !important;
-        }
-
-        .comic-panel-grid div[data-testid="stHorizontalBlock"] > div[data-testid="column"] {
-            width: calc(50% - 8px) !important;
-            min-width: calc(50% - 8px) !important;
-            flex: 0 0 calc(50% - 8px) !important;
-            margin-bottom: 12px !important;
-        }
-    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -637,7 +500,6 @@ elif st.session_state.panels:
     panels = st.session_state.panels
     seeds = st.session_state.seeds
     
-    st.markdown('<div class="comic-panel-grid">', unsafe_allow_html=True)
     for row in range(0, 20, 4):
         cols = st.columns(4)
         for col_idx in range(4):
@@ -663,10 +525,9 @@ elif st.session_state.panels:
                     
                     # Standardized dialogue box with 24px bottom gap between rows
                     st.markdown(f'<div class="gpt-dialogue-text">"{p.get("dialogue", "")}"</div>', unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
 
     # Generate New Button at bottom of comic view
-    st.markdown("<div class='bottom-gen-btn-container' style='margin-top: 16px;'>", unsafe_allow_html=True)
+    st.markdown("<br style='margin-bottom: 16px;'>", unsafe_allow_html=True)
     col_b1, col_b2, col_b3 = st.columns([3, 4, 3])
     with col_b2:
         st.markdown('<div class="primary-gen-btn">', unsafe_allow_html=True)
@@ -676,16 +537,13 @@ elif st.session_state.panels:
             st.session_state.current_title = "Comic Storyboard"
             st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
-    st.markdown("</div>", unsafe_allow_html=True)
 
 # LANDING PAGE (Only rendered when not generating and no comic active)
 else:
     st.markdown('<div class="chatgpt-hero-title">What\'s on your mind today?</div>', unsafe_allow_html=True)
 
-    st.markdown('<div class="landing-input-container">', unsafe_allow_html=True)
     col_l1, col_l2, col_l3 = st.columns([1, 8, 1])
     with col_l2:
-        st.markdown('<div class="landing-input-row">', unsafe_allow_html=True)
         c_txt, c_mic = st.columns([5.5, 1.5])
         with c_txt:
             prompt_input = st.text_input(
@@ -701,7 +559,6 @@ else:
                 just_once=True,
                 key='landing_voice_mic'
             )
-        st.markdown('</div>', unsafe_allow_html=True)
 
         # Suggestion Pills
         st.markdown("<div class='landing-sugg-container' style='margin-top: 24px;'>", unsafe_allow_html=True)
@@ -723,4 +580,3 @@ else:
         if chosen_prompt:
             st.session_state.generating_prompt = chosen_prompt
             st.rerun()
-    st.markdown('</div>', unsafe_allow_html=True)
